@@ -24,16 +24,13 @@ const dataSchema = z.object({
   steps: z.number().min(1).max(16),
   load: z.number().min(0).max(100),
   protection: z.number().min(0).max(2),
-  ssid: z.string().min(1),
-  pass: z.string().min(1),
-  value: z.string().min(1),
 });
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
   const validatedData = dataSchema.parse(data);
 
-  const { mode, acin, acout, steps, load, protection, ssid, pass, value } = validatedData;
+  const { mode, acin, acout, steps, load, protection } = validatedData;
 
   redis.set("mode", mode);
   redis.set("acin", acin);
@@ -41,9 +38,5 @@ export async function POST(request: NextRequest) {
   redis.set("steps", steps);
   redis.set("load", load);
   redis.set("protection", protection);
-  redis.set("ssid", ssid);
-  redis.set("pass", pass);
-  redis.set("value", value);
-
   return NextResponse.json({ message: "Data stored successfully" });
 }

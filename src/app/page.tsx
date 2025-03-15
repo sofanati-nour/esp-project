@@ -10,9 +10,6 @@ export default function Home() {
     steps: 1,
     load: 0,
     protection: 0,
-    ssid: "",
-    pass: "",
-    value: "",
   });
 
   const [message, setMessage] = useState("");
@@ -33,9 +30,6 @@ export default function Home() {
             steps: Number(data.steps) || 1,
             load: Number(data.load) || 0,
             protection: Number(data.protection) || 0,
-            ssid: data.ssid || "",
-            pass: data.pass || "",
-            value: data.value || "",
           });
         }
       } catch (error) {
@@ -195,50 +189,6 @@ export default function Home() {
             />
           </div>
         </div>
-
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium mb-1">SSID</label>
-            <input
-              type="text"
-              name="ssid"
-              value={formData.ssid}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md"
-              required
-            />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium mb-1">Password</label>
-            <input
-              type="text"
-              name="pass"
-              value={formData.pass}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md"
-              required
-            />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium mb-1">Value</label>
-            <input
-              type="text"
-              name="value"
-              value={formData.value}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md"
-              required
-            />
-          </div>
-        </div>
-
-            
 
         <button
           type="submit"
