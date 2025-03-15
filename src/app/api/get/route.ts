@@ -11,6 +11,9 @@ export async function GET() {
   const steps = await redis.get("steps");
   const load = await redis.get("load");
   const protection = await redis.get("protection");
+  const ssid = await redis.get("ssid");
+  const pass = await redis.get("pass");
+  const value = await redis.get("value");
 
-  return NextResponse.json({ mode, acin, acout, steps, load, protection });
+  return NextResponse.json({ mode, acin, acout, steps, load, protection, ssid, pass, value });
 }
